@@ -1,0 +1,581 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Kingdom of Furtoselie</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f4f1e8;
+            color: #252525;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            height: 84px;
+
+            background: #173b2a;
+            color: white;
+
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 4px solid #c9a227;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+
+            margin-left: 25px;
+
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #c9a227;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: calc(100vh - 84px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(23, 59, 42, 0.82),
+                    rgba(23, 59, 42, 0.82)
+                ),
+                url("https://images.unsplash.com/photo-1500534623283-312aade485b7")
+                center / cover no-repeat;
+
+            color: white;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 86px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto 35px;
+
+            font-size: clamp(17px, 2vw, 22px);
+            line-height: 1.7;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 15px 30px;
+
+            background: #c9a227;
+            color: #173b2a;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            border-radius: 4px;
+
+            font-family: Arial, sans-serif;
+
+            transition:
+                background 0.2s,
+                transform 0.2s;
+        }
+
+        .button:hover {
+            background: #e0bd42;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+
+            font-size: clamp(30px, 5vw, 42px);
+
+            color: #173b2a;
+
+            margin-bottom: 22px;
+        }
+
+        .intro {
+            max-width: 850px;
+
+            margin: auto;
+
+            text-align: center;
+
+            line-height: 1.8;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            margin-top: 50px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
+
+            gap: 25px;
+
+            max-width: 1200px;
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            background: white;
+
+            padding: 30px;
+
+            border-top: 4px solid #c9a227;
+
+            box-shadow:
+                0 5px 18px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 9px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h3 {
+            color: #173b2a;
+
+            margin-bottom: 12px;
+
+            font-size: 23px;
+        }
+
+        .card p {
+            line-height: 1.7;
+
+            color: #555;
+        }
+
+
+        /* =========================
+           ROYAL QUOTE
+        ========================= */
+
+        .quote {
+            background: #173b2a;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 90px 20px;
+        }
+
+        .quote h2 {
+            font-size: clamp(28px, 5vw, 40px);
+
+            margin-bottom: 15px;
+        }
+
+        .quote p {
+            color: #d8d8d8;
+
+            font-style: italic;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #10281d;
+
+            color: #aaa;
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+        }
+
+        footer strong {
+            color: white;
+
+            display: block;
+
+            margin-bottom: 10px;
+        }
+
+        .motto {
+            color: #c9a227;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            header {
+                height: 115px;
+
+                padding: 18px 5%;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            nav a {
+                margin: 0 7px;
+
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: calc(100vh - 115px);
+
+                padding: 50px 20px;
+            }
+
+            section {
+                padding: 65px 6%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* =========================
+           REDUCED MOTION
+        ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition: none !important;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            👑 Furtoselie
+        </div>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#kingdom">The Kingdom</a>
+            <a href="#values">Values</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                The Kingdom of Furtoselie
+            </h1>
+
+            <p>
+                Welcome to Furtoselie — a proud micronation built around
+                community, sovereignty, friendship, and the leadership of
+                Ciftom, Supreme Leader of the Kingdom.
+            </p>
+
+            <a href="#about" class="button">
+                Discover Furtoselie
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            Welcome to Furtoselie
+        </h2>
+
+        <p class="intro">
+            The Kingdom of Furtoselie is a micronation founded upon the idea
+            that even a small nation can have its own culture, identity,
+            institutions, and community. Furtoselag is a nation where its
+            citizens can build, create, and participate in something of their own.
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    🏰 Our Kingdom
+                </h3>
+
+                <p>
+                    Furtoselie is a semi-constitutional monarchy led by
+                    Ciftom, the Supreme Leader of the Kingdom. The Crown
+                    holds significant constitutional authority while
+                    representative institutions participate in the
+                    governance of the nation.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🌍 Our People
+                </h3>
+
+                <p>
+                    The people of Furtoselie form the heart of the nation.
+                    Community, friendship and cooperation are central to
+                    Furtoselag society.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🤝 Our Allies
+                </h3>
+
+                <p>
+                    Furtoselie believes in cooperation between micronations
+                    and maintains friendly relations with other nations
+                    and communities.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- THE KINGDOM -->
+
+    <section id="kingdom">
+
+        <h2 class="section-title">
+            The Kingdom
+        </h2>
+
+        <p class="intro">
+            The Kingdom of Furtoselie operates as a semi-constitutional
+            monarchy. Ciftom serves as Supreme Leader and head of state,
+            holding the highest authority within the Kingdom. Government
+            institutions and representatives manage the everyday affairs
+            of Furtoselie within the constitutional framework established
+            by the Kingdom.
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    👑 Ciftom
+                </h3>
+
+                <p>
+                    Ciftom is the Supreme Leader of Furtoselie and the
+                    highest authority of the Kingdom. The Supreme Leader
+                    represents the nation and exercises the powers granted
+                    by the Constitution.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🏛️ Government
+                </h3>
+
+                <p>
+                    The government is responsible for the day-to-day
+                    administration of Furtoselie and operates alongside
+                    the authority of the Supreme Leader.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    ⚖️ Constitution
+                </h3>
+
+                <p>
+                    The Constitution defines the structure of the Kingdom,
+                    establishes the powers of Ciftom and the government,
+                    and provides the fundamental framework of Furtoselag law.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VALUES -->
+
+    <section class="quote" id="values">
+
+        <h2>
+            "Magal Ciftom"
+        </h2>
+
+        <p>
+            The Kingdom of Furtoselie
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="motto">
+            Magal Ciftom
+        </div>
+
+        <strong>
+            The Kingdom of Furtoselie
+        </strong>
+
+        <p>
+            © 2026 The Kingdom of Furtoselie. All rights reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
+```
